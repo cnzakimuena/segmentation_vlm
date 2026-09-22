@@ -79,18 +79,14 @@ class VLMSegmentation:
         # canvases for combined binary semantic mask and instance mask
         semantic_array = np.zeros((height, width), dtype=np.uint8)
         instance_array = np.zeros((height, width, 3), dtype=np.uint8)
-        count = 0
         for mask in masks:
             mask = mask.cpu().numpy()
             mask_bool = mask.astype(bool)
             # update semantic mask; set mask regions to white (255)
             semantic_array[mask_bool] = 255
             # update instance mask; generate random color
+            # pinkish red [255, 30, 90]; blue [30, 100, 255]
             color_rgb = [random.randint(50, 255) for _ in range(3)]
-            if count == 0:
-                color_rgb = [255, 30, 90]
-            elif count == 1:
-                color_rgb = [30, 100, 255]
             instance_array[mask_bool] = color_rgb
             # overlay image
             mask_overlay = np.zeros((height, width, 4), dtype=np.uint8)
@@ -99,7 +95,6 @@ class VLMSegmentation:
             mask_image = Image.fromarray(mask_overlay)
             # overlay the mask on the image
             image_with_mask = Image.alpha_composite(image_with_mask, mask_image)
-            count += 1
         # convert numpy arrays to PIL images
         semantic_mask = Image.fromarray(semantic_array, mode="L")
         instance_mask = Image.fromarray(instance_array, mode="RGB")
@@ -133,7 +128,7 @@ class VLMSegmentation:
 
     def ovd(self):
         """
-        Open-vocabulary object detection function. Objects in the image are detected and bounding 
+        Open-vocabulary object detection method. Objects in the image are detected and bounding 
         boxes are generated based on the text prompt. The results can be visualized and saved as 
         an image.
         """
@@ -161,7 +156,7 @@ class VLMSegmentation:
 
     def ps(self, save_visualization=False, save_results=False):
         """ 
-        Promptable segmentation function. Detected objects are segmented based on the bounding 
+        Promptable segmentation method. Detected objects are segmented based on the bounding 
         boxes. The results can be visualized and saved as images.
         """
         # load promptable segmentation model
@@ -196,7 +191,7 @@ if __name__ == '__main__':
     EXAMPLE_TEXT_PROMPT = "cat"
     example_segmentation = VLMSegmentation(EXAMPLE_IMAGE_PATH, EXAMPLE_TEXT_PROMPT)
 
-    # --- Vision-Language Model segmentation
+    # --- Vision-Language Model segmentation ---
     # get bounding boxes with OWL-ViT open-vocabulary object detection model
     example_segmentation.ovd()
     # get segmentation masks with Mobile SAM promptable segmentation model
