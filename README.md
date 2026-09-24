@@ -4,7 +4,7 @@ Script for zero-shot Vision-Language Model segmentation ([Ren et al, 2024](https
 Environment setup:
 
 ```bash
-conda create -n myenv python=3.11.9
+conda create -n myenv python=3.11
 conda activate myenv
 ```
 
