@@ -17,7 +17,7 @@ pip install -r requirements.txt
 Usage:
 
 ```bash
-python vlm_segmentation.py
+python segmentation_vlm.py
 ```
 
 <p align="center">
