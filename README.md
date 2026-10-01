@@ -1,5 +1,5 @@
 # Vision-Language Model Segmentation
-Script for zero-shot vision-language model segmentation ([Ren et al, 2024](https://doi.org/10.48550/arXiv.2401.14159)). It combines OWL-ViT open-vocabulary object detection ([Minderer et al, 2022](https://doi.org/10.48550/arXiv.2205.06230)) and Mobile SAM ([Zhang et al, 2023](https://doi.org/10.48550/arXiv.2306.14289)) promptable segmentation to segment objects in an image based on a text prompt. Images from the Cat Individual Images dataset ([Yeh, 2020](https://www.kaggle.com/datasets/timost1234/cat-individuals)) are used for demonstration.
+Script for zero-shot vision-language model segmentation ([Ren et al, 2024](https://doi.org/10.48550/arXiv.2401.14159)). It combines OWL-ViT ([Minderer et al, 2022](https://doi.org/10.48550/arXiv.2205.06230)) open-vocabulary object detection and Mobile SAM ([Zhang et al, 2023](https://doi.org/10.48550/arXiv.2306.14289)) promptable segmentation to segment objects in an image based on a text prompt. Images from the Cat Individual Images dataset ([Yeh, 2020](https://www.kaggle.com/datasets/timost1234/cat-individuals)) are used for demonstration.
 
 Environment setup:
 
